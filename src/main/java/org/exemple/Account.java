@@ -9,7 +9,6 @@ public abstract class Account {
 
     public Account(int agency, int number) {
         total++;
-        System.out.println("Total of accounts are: " + total);
         this.agency = agency;
         this.number = number;
     }
@@ -40,7 +39,7 @@ public abstract class Account {
 
     public void deposit(double value) {
         this.balance += value;
-    }
+    };
 
     public boolean withdraw(double value) {
         if (this.balance >= value) {
