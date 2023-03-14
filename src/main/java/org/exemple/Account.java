@@ -41,19 +41,15 @@ public abstract class Account {
         this.balance += value;
     };
 
-    public boolean withdraw(double value) {
-        if (this.balance >= value) {
-            this.balance -= value;
-            return true;
+    public void withdraw(double value) {
+        if (this.balance < value) {
+            throw new InsufficientBalanceException("Current balance is: " + this.balance);
         }
-        return false;
+        this.balance -= value;
     }
 
-    public boolean transfer(double value, Account targetAccount) {
-        if (this.withdraw(value)) {
-            targetAccount.balance += value;
-            return true;
-        }
-        return false;
+    public void transfer(double value, Account targetAccount) {
+        this.withdraw(value);
+        targetAccount.balance += value;
     }
 }
