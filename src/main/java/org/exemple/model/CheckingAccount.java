@@ -12,14 +12,12 @@ public class CheckingAccount extends Account implements Taxable{
     }
 
     @Override
-    public void withdraw(double value) {
+    public void withdraw(double value) throws InsufficientBalanceException {
         super.withdraw(value + 0.2);
     }
 
     @Override
     public double getTaxValue() {
-        double tax = super.getBalance() * 0.1;
-        this.withdraw(tax);
-        return tax;
+        return super.getBalance() * 0.1;
     }
 }

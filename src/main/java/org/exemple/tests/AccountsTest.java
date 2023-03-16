@@ -1,10 +1,11 @@
 package org.exemple.Tests;
 
 import org.exemple.CheckingAccount;
+import org.exemple.InsufficientBalanceException;
 import org.exemple.SavingsAccount;
 
 public class AccountsTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InsufficientBalanceException {
         CheckingAccount ca = new CheckingAccount(111, 111);
         ca.deposit(100);
 

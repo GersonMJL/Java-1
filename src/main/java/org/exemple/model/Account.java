@@ -1,5 +1,7 @@
 package org.exemple;
 
+import org.exemple.model.Client;
+
 public abstract class Account {
     private double balance;
     private int agency;
@@ -41,14 +43,14 @@ public abstract class Account {
         this.balance += value;
     };
 
-    public void withdraw(double value) {
+    public void withdraw(double value) throws InsufficientBalanceException {
         if (this.balance < value) {
             throw new InsufficientBalanceException("Current balance is: " + this.balance);
         }
         this.balance -= value;
     }
 
-    public void transfer(double value, Account targetAccount) {
+    public void transfer(double value, Account targetAccount) throws InsufficientBalanceException {
         this.withdraw(value);
         targetAccount.balance += value;
     }
